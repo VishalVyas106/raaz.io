@@ -129,7 +129,7 @@ export default function VerifyAccount() {
           
           <div className="mt-6 text-center">
             <p className="text-sm text-zinc-400">
-              Didn't receive the code?{' '}
+              Do not receive the code?{' '}
               <button 
                 onClick={() => {/* Add resend code logic */}}
                 className="text-blue-400 hover:text-blue-300 transition-colors"
