@@ -300,7 +300,7 @@ export default function Home() {
                         ))}
                       </div>
                       <p className="text-zinc-300 mb-4">
-                        "{testimonial.content}"
+                        {testimonial.content}
                       </p>
                       <div className="flex flex-col">
                         <span className="font-medium">{testimonial.author}</span>
