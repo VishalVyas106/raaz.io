@@ -1,7 +1,7 @@
 import dbConnect from '@/lib/dbConnect';
 import UserModel from '@/model/User';
 import bcrypt from 'bcryptjs';
-import { sendVerificationEmail } from '@/helpers/sendVerificationEmail';
+
 
 export async function POST(request: Request) {
   await dbConnect();
@@ -19,6 +19,7 @@ export async function POST(request: Request) {
         {
           success: false,
           message: 'Username is already taken',
+
         },
         { status: 400 }
       );
@@ -36,6 +37,7 @@ export async function POST(request: Request) {
           },
           { status: 400 }
         );
+        
       } else {
         const hashedPassword = await bcrypt.hash(password, 10);
         existingUserByEmail.password = hashedPassword;
@@ -62,21 +64,7 @@ export async function POST(request: Request) {
       await newUser.save();
     }
 
-    // Send verification email
-    const emailResponse = await sendVerificationEmail(
-      email,
-      username,
-      verifyCode
-    );
-    if (!emailResponse.success) {
-      return Response.json(
-        {
-          success: false,
-          message: emailResponse.message,
-        },
-        { status: 500 }
-      );
-    }
+    
 
     return Response.json(
       {
