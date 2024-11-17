@@ -15,7 +15,8 @@ async function dbConnect(): Promise<void> {
 
   try {
     // Attempt to connect to the database
-    const db = await mongoose.connect(process.env.MONGODB_URI || '', {});
+    const db = await mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://vyasvishal106:kxTaFXtrjfVM2k8Z@cluster0.39msa.mongodb.net/Raaazio?retryWrites=true&w=majority&appName=Cluster0
+', {});
 
     connection.isConnected = db.connections[0].readyState;
 
